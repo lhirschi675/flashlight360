@@ -1,7 +1,19 @@
-const StudentsPage = () => {
+import type { Student } from "../types/student";
+
+type Props = {
+  studentDataFetch: Student[];
+  setStudentDataFetch: React.Dispatch<React.SetStateAction<Student[]>>;
+};
+
+const StudentsPage = ({ studentDataFetch, setStudentDataFetch }: Props) => {
   return (
     <>
-      <div>Students Page</div>
+      <h2>Students</h2>
+      <ul>
+        {studentDataFetch.map((student) => (
+          <li key={student.id}>{student.name}</li>
+        ))}
+      </ul>
     </>
   );
 };

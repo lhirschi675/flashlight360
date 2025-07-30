@@ -1,60 +1,53 @@
+import "./SideNav.css";
+import { FaHome, FaSchool, FaBook, FaCalendar } from "react-icons/fa";
+
 type Props = {
   selectedPage: string;
   setSelectedPage: (
-    page: "dashboard" | "students" | "lessons" | "calendar"
+    page: "Dashboard" | "Students" | "Lessons" | "Calendar"
   ) => void;
 };
 
 const SideNav = ({ selectedPage, setSelectedPage }: Props) => {
   return (
-    <nav
-      style={{
-        width: "200px",
-        background: "linear-gradient(to bottom, #5c3ad6, #937fdc)",
-        color: "white",
-        padding: "1rem",
-      }}
-    >
+    <nav className="sidenav">
+      <img
+        className="sidenav-logo"
+        src="/flashlight-learning-logo.png"
+        alt="Flashlight Learning Logo"
+      />
       <ul style={{ listStyle: "none", padding: 0 }}>
         <li
-          style={{
-            margin: "1rem 0",
-            cursor: "pointer",
-            fontWeight: selectedPage === "dashboard" ? "bold" : "normal",
-          }}
-          onClick={() => setSelectedPage("dashboard")}
+          className={`nav-link ${
+            selectedPage === "Dashboard" ? "active-link" : ""
+          }`}
+          onClick={() => setSelectedPage("Dashboard")}
         >
-          Dashboard
+          <FaHome className="icon-margin" /> Dashboard
         </li>
         <li
-          style={{
-            margin: "1rem 0",
-            cursor: "pointer",
-            fontWeight: selectedPage === "students" ? "bold" : "normal",
-          }}
-          onClick={() => setSelectedPage("students")}
+          className={`nav-link ${
+            selectedPage === "Students" ? "active-link" : ""
+          }`}
+          onClick={() => setSelectedPage("Students")}
         >
-          Students
+          <FaSchool className="icon-margin" /> Students
         </li>
         <li
-          style={{
-            margin: "1rem 0",
-            cursor: "pointer",
-            fontWeight: selectedPage === "lessons" ? "bold" : "normal",
-          }}
-          onClick={() => setSelectedPage("lessons")}
+          className={`nav-link ${
+            selectedPage === "Lessons" ? "active-link" : ""
+          }`}
+          onClick={() => setSelectedPage("Lessons")}
         >
-          Lessons
+          <FaBook className="icon-margin" /> Lessons
         </li>
         <li
-          style={{
-            margin: "1rem 0",
-            cursor: "pointer",
-            fontWeight: selectedPage === "calendar" ? "bold" : "normal",
-          }}
-          onClick={() => setSelectedPage("calendar")}
+          className={`nav-link ${
+            selectedPage === "Calendar" ? "active-link" : ""
+          }`}
+          onClick={() => setSelectedPage("Calendar")}
         >
-          Calendar
+          <FaCalendar className="icon-margin" /> Calendar
         </li>
       </ul>
     </nav>
