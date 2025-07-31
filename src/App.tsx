@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 import Banner from "./components/Banner";
@@ -11,36 +11,37 @@ import StudentsPage from "./components/StudentsPage";
 import type { Student } from "./types/student";
 
 type Page = "Dashboard" | "Students" | "Lessons" | "Calendar";
-type PageDescription =
-  | "Welcome back! To your course overview"
-  | "Manage and track your enrolled students"
-  | "lessons"
-  | "calendar";
+const pages: Page[] = ["Dashboard", "Students", "Lessons", "Calendar"];
+const pageDescriptions: string[] = [
+  "Welcome back! To your course overview",
+  "Manage and track your enrolled students",
+  "Manage and track your enrolled lessons",
+  "Manage and track of your projects/tasks using the Calendar",
+];
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<Page>("Dashboard");
-  const [studentDataFetch, setStudentDataFetch] = useState<Student[]>([
-    {
-      id: "STU00012",
-      name: "John Smith",
-      age: 16,
-      email: "jsmith@gmail.com",
-      phone: "(435)222-2222",
-      course: "Course1A",
-      created: "01/01/2025",
-      updated: "01/02/2025",
-    },
-    {
-      id: "STU00013",
-      name: "Jane Doe",
-      age: 12,
-      email: "jdoe@gmail.com",
-      phone: "(435)111-1111",
-      course: "Course1B",
-      created: "01/03/2025",
-      updated: "01/04/2025",
-    },
-  ]);
+  const [studentDataFetch, setStudentDataFetch] = useState<Student[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/students")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch students");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setStudentDataFetch(data);
+        console.log(studentDataFetch, "CHECK THIS OUT");
+      })
+      .catch((error) => {
+        console.error("Error fetching students:", error);
+      });
+  }, []);
+
+  const pageIndex = pages.indexOf(selectedPage);
+  const description: string = pageDescriptions[pageIndex];
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
@@ -49,7 +50,7 @@ function App() {
         <Banner
           selectedPage={selectedPage}
           title={selectedPage + " Manager"}
-          subtitle="Manage and track your enrolled students"
+          subtitle={description}
           userName="Logan Hirschi"
           onLogout={() => console.log("User logged out")}
         />

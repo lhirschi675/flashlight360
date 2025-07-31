@@ -7,4 +7,5 @@ export interface Student {
   course: string;
   created: string;
   updated: string;
+  progress: number;
 }

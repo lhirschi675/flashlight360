@@ -1,0 +1,55 @@
+.student-info-wrapper {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 20px;
+  width: 95%;
+  overflow-x: auto;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr 1fr 1.5fr;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.header {
+  font-weight: bold;
+  background-color: #f9fafb;
+}
+
+.row:hover {
+  background-color: #f3f4f6;
+}
+
+.student-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.actions button {
+  margin-right: 0.5rem;
+  background-color: #f97316;
+  border: none;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.actions button:hover {
+  background-color: #ea580c;
+}
