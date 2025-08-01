@@ -92,7 +92,7 @@
   -moz-appearance: none;
   font-size: 1em;
   padding: 0.5em 1em;
-  padding-right: 3em; /* space for arrow */
+  padding-right: 3em;
   border: none;
   background-color: white;
   width: 100%;

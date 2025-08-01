@@ -25,6 +25,7 @@ function App() {
 
   useEffect(() => {
     fetch("http://localhost:8080/students")
+      // fetch("http://18.224.252.238:8080/students")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch students");
@@ -33,12 +34,15 @@ function App() {
       })
       .then((data) => {
         setStudentDataFetch(data);
-        console.log(studentDataFetch, "CHECK THIS OUT");
       })
       .catch((error) => {
         console.error("Error fetching students:", error);
       });
   }, []);
+
+  useEffect(() => {
+    console.log(studentDataFetch, "THIS SHOULD HAVE A GRADE");
+  }, [studentDataFetch]);
 
   const pageIndex = pages.indexOf(selectedPage);
   const description: string = pageDescriptions[pageIndex];

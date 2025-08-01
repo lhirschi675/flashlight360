@@ -58,7 +58,7 @@ const DashboardPage: React.FC<Props> = ({ studentDataFetch }) => {
                 studentInfo={{
                   id: student.id,
                   name: student.name,
-                  progress: student.progress,
+                  grade: student.grade,
                 }}
               />
             ))}

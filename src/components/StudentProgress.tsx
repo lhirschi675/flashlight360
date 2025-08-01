@@ -4,20 +4,20 @@ import "./StudentProgress.css";
 type Student = {
   id: string;
   name: string;
-  progress: number;
+  grade: number;
 };
 
-const getProgressColor = (progress: number) => {
-  if (progress <= 25) return "progress-red";
-  if (progress <= 65) return "progress-yellow";
+const getProgressColor = (grade: number) => {
+  if (grade <= 25) return "progress-red";
+  if (grade <= 65) return "progress-yellow";
   return "progress-green";
 };
 
 const StudentProgress: React.FC<{ studentInfo: Student }> = ({
   studentInfo,
 }) => {
-  const progressColor = getProgressColor(studentInfo.progress);
-
+  const progressColor = getProgressColor(studentInfo.grade);
+  console.log(studentInfo, "THIS SHOULD BE SOMETHING");
   return (
     <div className="student-card">
       <img
@@ -28,12 +28,12 @@ const StudentProgress: React.FC<{ studentInfo: Student }> = ({
 
       <div className="student-details">
         <h2 className="student-name">
-          {studentInfo.name + "  " + studentInfo.progress + "%"}
+          {studentInfo.name + "  " + String(studentInfo.grade) + "%"}
         </h2>
         <div className="progress-bar-bg">
           <div
             className={`progress-bar-fill ${progressColor}`}
-            style={{ width: `${studentInfo.progress}%` }}
+            style={{ width: `${studentInfo.grade}%` }}
           ></div>
         </div>
       </div>
